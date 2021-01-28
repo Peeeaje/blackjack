@@ -5,8 +5,7 @@ from player import Player
 def initialize():
     player = Player()
     dealer = Player()
-    deck = Deck()
-    return player, dealer, deck
+    return player, dealer
 
 
 def player_win(player, bet_size):
@@ -25,7 +24,8 @@ def player_lose(player, bet_size):
     print(f"Now you have {player.chip}")
 
 
-def play_blackjack(player, dealer, deck):
+def play_blackjack(player, dealer):
+    deck = Deck()
 
     # betting round
     print(f"You have {player.chip}. How much do you bet?")
@@ -119,9 +119,10 @@ def play_blackjack(player, dealer, deck):
         player_lose(player, bet_size)
 
         
-player, dealer, deck = initialize()
+player, dealer = initialize()
+
 while True:
-    play_blackjack(player, dealer, deck)
+    play_blackjack(player, dealer)
     print("Do you want to continue? y/n")
     ans = input()
     if ans == "n":

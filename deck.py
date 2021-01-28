@@ -20,3 +20,9 @@ class Deck:
 
     def __len__(self):
         return len(self._cards)
+
+
+class SixDeck(Deck):
+    def __init__(self):
+        self._cards:List[Card] = [Card(rank + suit) for rank in Card.RANKS_STR for suit in Card.SUITS for i in range(6)]
+        self.shuffle()
