@@ -5,8 +5,7 @@ from player import Player
 def initialize():
     player = Player()
     dealer = Player()
-    deck = Deck()
-    return player, dealer, deck
+    return player, dealer
 
 
 def player_win(player, bet_size):
@@ -25,7 +24,12 @@ def player_lose(player, bet_size):
     print(f"Now you have {player.chip}")
 
 
-def play_blackjack(player, dealer, deck):
+def play_blackjack(player, dealer):
+    deck = Deck()
+
+    if player.chip == 0:
+        print("You don't have any chip!! You cannot play anymore.")
+        exit()
 
     # betting round
     print(f"You have {player.chip}. How much do you bet?")
@@ -48,8 +52,7 @@ def play_blackjack(player, dealer, deck):
     print(f"your hand is {player.hand.cards[0]} and {player.hand.cards[1]}")
     print(f"dealer's hand is {dealer.hand.cards[0]} and one downed card")
 
-    # proccess blackjack
-    print(player.hand.return_sum_list()[-1])
+    # proccess hand is blackjack
     if player.hand.return_sum_list()[-1] == 21:
         if not dealer.hand.return_sum_list()[-1] == 21:
             print("Blackjack!!")
@@ -59,7 +62,7 @@ def play_blackjack(player, dealer, deck):
         else:
             print("Dealer has also blackjack, it's chop")
 
-
+    # take action
     print("Which do you want, 'Hit' or 'Stand'?")
     option = input()
 
@@ -118,24 +121,12 @@ def play_blackjack(player, dealer, deck):
     else:
         player_lose(player, bet_size)
 
-
         
-player, dealer, deck = initialize()
+player, dealer = initialize()
 
 while True:
-    play_blackjack(player, dealer, deck)
+    play_blackjack(player, dealer)
     print("Do you want to continue? y/n")
     ans = input()
     if ans == "n":
         exit()
-
-
-# player = Player()
-# dealer = Player()
-# deck = Deck()
-
-# for i in range(2):
-#     player.draw_card(deck)
-
-# print(player.hand.return_sum_list())
-# print(player.hand.cards)
