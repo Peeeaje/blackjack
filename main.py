@@ -28,7 +28,7 @@ def play_blackjack(player, dealer):
     deck = Deck()
 
     if player.chip == 0:
-        print("You don't have any chip!! You cannot play.")
+        print("You don't have any chip!! You cannot play anymore.")
         exit()
 
     # betting round
@@ -52,8 +52,7 @@ def play_blackjack(player, dealer):
     print(f"your hand is {player.hand.cards[0]} and {player.hand.cards[1]}")
     print(f"dealer's hand is {dealer.hand.cards[0]} and one downed card")
 
-    # proccess blackjack
-    print(player.hand.return_sum_list()[-1])
+    # proccess hand is blackjack
     if player.hand.return_sum_list()[-1] == 21:
         if not dealer.hand.return_sum_list()[-1] == 21:
             print("Blackjack!!")
@@ -63,7 +62,7 @@ def play_blackjack(player, dealer):
         else:
             print("Dealer has also blackjack, it's chop")
 
-
+    # take action
     print("Which do you want, 'Hit' or 'Stand'?")
     option = input()
 
