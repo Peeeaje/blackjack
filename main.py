@@ -27,6 +27,10 @@ def player_lose(player, bet_size):
 def play_blackjack(player, dealer):
     deck = Deck()
 
+    if player.chip == 0:
+        print("You don't have any chip!! You cannot play.")
+        exit()
+
     # betting round
     print(f"You have {player.chip}. How much do you bet?")
     bet_size = int(input())
