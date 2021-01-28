@@ -118,24 +118,11 @@ def play_blackjack(player, dealer, deck):
     else:
         player_lose(player, bet_size)
 
-
         
 player, dealer, deck = initialize()
-
 while True:
     play_blackjack(player, dealer, deck)
     print("Do you want to continue? y/n")
     ans = input()
     if ans == "n":
         exit()
-
-
-# player = Player()
-# dealer = Player()
-# deck = Deck()
-
-# for i in range(2):
-#     player.draw_card(deck)
-
-# print(player.hand.return_sum_list())
-# print(player.hand.cards)

@@ -1,10 +1,11 @@
 from card import Card
 import random
+from typing import List
 
 
 class Deck:
     def __init__(self):
-        self._cards = [Card(rank + suit) for rank in Card.RANKS_STR for suit in Card.SUITS]
+        self._cards:List[Card] = [Card(rank + suit) for rank in Card.RANKS_STR for suit in Card.SUITS]
         self.shuffle()
 
     def shuffle(self):
